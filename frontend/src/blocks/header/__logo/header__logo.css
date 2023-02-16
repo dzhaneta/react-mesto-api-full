@@ -1,0 +1,14 @@
+.header__logo {
+  padding-bottom: 40px;
+  justify-self: flex-start;
+  max-width: 142px;
+}
+
+/* стили от 425 и до 768 пикселей — от большого смартфона до вертикального положения планшета */
+@media screen and (max-width: 1023px) {
+  .header__logo {
+    max-width: 103.74px;
+    padding-left: 27px;
+    padding-bottom: 30.6px;
+  }
+}

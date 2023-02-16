@@ -1,0 +1,9 @@
+.form__field {
+  display: block;
+  margin: 30px 0 0;
+  position: relative;
+}
+
+.form__field:first-of-type {
+  margin-top: 0;
+}

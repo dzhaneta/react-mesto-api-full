@@ -1,0 +1,16 @@
+.footer__copyright {
+  margin: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+}
+
+/* стили от 320 и до 768 пикселей — от большого смартфона до вертикального положения планшета */
+@media screen and (max-width: 767px) {
+  .footer {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+

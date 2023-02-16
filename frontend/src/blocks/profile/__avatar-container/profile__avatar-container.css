@@ -1,0 +1,27 @@
+.profile__avatar-container {
+  position: relative;
+}
+
+.profile__avatar-container::before {
+  content: "";
+
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  background-image: url(../../../images/pen-icon.svg);
+  background-color: rgba(0,0,0,.8);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+
+  opacity: 0;
+  transition: opacity 0.3s ease 0s;
+  z-index: 1;
+}
+
+.profile__avatar-container:hover::before {
+  opacity: 1;
+}
+

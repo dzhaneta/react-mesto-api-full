@@ -1,0 +1,22 @@
+.profile__add-button {
+  box-sizing: border-box;
+  min-height: 50px;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  background-color: transparent;
+  outline: 0;
+  background-image: url(../../../images/add_button_icon.svg);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+  grid-area: button;
+  align-self: center;
+}
+
+/* стили от 320 и до 768 пикселей — от большого смартфона до вертикального положения планшета */
+@media screen and (max-width: 768px) {
+  .profile__add-button {
+    margin-top: 36px;
+    width: 282px;
+  }
+}

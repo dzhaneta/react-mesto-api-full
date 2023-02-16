@@ -1,0 +1,14 @@
+.popup__image {
+    width: 120px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* стили от 425 и до 768 пикселей — от большого смартфона до вертикального положения планшета */
+  @media screen and (max-width: 1023px) {
+    .popup__image {
+        
+    }
+  }
+  

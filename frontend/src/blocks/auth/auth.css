@@ -1,0 +1,15 @@
+.auth {
+    background-color: transparent;
+    box-sizing: border-box;
+    max-width: 358px;
+    padding: 60px 0 80px;
+    position: relative;
+    width: 100%;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .auth {
+      padding: 40px 30px;
+    }
+  }
+  

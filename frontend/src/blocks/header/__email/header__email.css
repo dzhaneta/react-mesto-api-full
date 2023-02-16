@@ -1,0 +1,19 @@
+.header__email {
+    display: block;
+    margin: 0;
+    padding-right: 24px;
+    text-align: right;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #fff;
+  }
+  
+  /* стили от 425 и до 768 пикселей — от большого смартфона до вертикального положения планшета */
+  @media screen and (max-width: 767px) {
+    .header__email {
+        font-size: 14px;
+        line-height: 17px;
+    }
+  }

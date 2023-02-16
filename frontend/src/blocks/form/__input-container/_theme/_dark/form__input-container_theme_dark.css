@@ -1,0 +1,12 @@
+.form__input-container_theme_dark {
+    border: 0;
+    margin: 50px 0 0;
+    padding: 0;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .form__input-container_theme_dark {
+      margin: 40px 0 0;
+    }
+  }
+  

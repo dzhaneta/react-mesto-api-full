@@ -1,0 +1,7 @@
+.photo-grid__pic-info {
+  grid-area: pic-info;
+  width: 246px;
+  margin: 25px 0 31px 21px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+}

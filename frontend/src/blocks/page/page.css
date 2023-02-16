@@ -1,0 +1,12 @@
+/* стили от 1280 - для стандартных ноутбуков и до бесконечности */
+.page {
+  display: grid;
+  grid-template-columns: minmax(min-content, 1280px);
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
+  justify-items: center;
+}
+

@@ -1,0 +1,20 @@
+.form__save-button_theme_dark {
+    position: relative;
+    margin: 216px 0 0;
+    background-color: #fff;
+    color: #000;
+    transition: .3s;
+  }
+
+@media screen and (max-width: 767px) {
+  .form__save-button_theme_dark {
+    margin-top: 173px;
+    font-size: 16px;
+    line-height: 19px;
+  }
+}
+
+.form__save-button_theme_dark:hover {
+    opacity: 0.85;
+    cursor: pointer;
+  }

@@ -1,0 +1,24 @@
+/* стили от 1280 - для стандартных ноутбуков и до бесконечности */
+.footer {
+  min-width: calc(100% - 200px*2);
+  margin: 66px 0 60px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* стили от 1024 и до 1279 пикселей — от вертикального до горизонтального положения планшета */
+@media screen and (max-width: 1279px) {
+  .footer {
+    min-width: calc(100% - 160px*2);
+  }
+}
+
+/* стили от 320 и до 1023 пикселей — от большого смартфона до вертикального положения планшета */
+@media screen and (max-width: 1023px) {
+  .footer {
+    min-width: calc(100% - 19px*2);
+    margin: 48px 0 36px;
+  }
+}
+
+

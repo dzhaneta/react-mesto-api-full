@@ -1,0 +1,9 @@
+.popup__photo-caption {
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #fff;
+  transform: translateY(100%);
+}

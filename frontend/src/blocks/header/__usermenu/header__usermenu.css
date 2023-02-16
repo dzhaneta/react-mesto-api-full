@@ -1,0 +1,13 @@
+.header__usermenu {
+    display: flex;
+    align-self: flex-start;
+    justify-self: flex-end;
+}
+
+/* стили от 425 и до 768 пикселей — от большого смартфона до вертикального положения планшета */
+@media screen and (max-width: 1023px) {
+  .header__usermenu {
+      padding-right: 27px;
+      padding-bottom: 33px;
+  }
+}

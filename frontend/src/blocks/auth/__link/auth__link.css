@@ -1,0 +1,21 @@
+.auth__link {
+    display: block;
+    margin-top: 15px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+@media screen and (max-width: 767px) {
+  .auth__link {
+    margin-top: 20px;
+  }
+}
+
+  .auth__link:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }

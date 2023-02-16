@@ -1,0 +1,21 @@
+.profile__info {
+  max-width: 336px;
+  grid-area: profile;
+  align-self: center;
+
+  display: grid;
+  grid-template-columns: fit-content(312px) 24px;
+  grid-template-rows: 2fr;
+  grid-template-areas:
+  "name edit"
+  "bio bio";
+  align-items: baseline;
+}
+
+/* стили от 320 и до 768 пикселей — от большого смартфона до вертикального положения планшета */
+@media screen and (max-width: 768px) {
+  .profile__info {
+    margin-top: 26px;
+  }
+}
+

@@ -1,0 +1,17 @@
+.photo-grid__item {
+  object-fit: cover;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 282px;
+  height: 361px;
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 282px 1fr;
+  grid-template-areas:
+  "pic"
+  "pic-info";
+}

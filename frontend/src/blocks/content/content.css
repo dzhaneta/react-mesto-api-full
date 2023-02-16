@@ -1,0 +1,21 @@
+.content {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* стили от 1024 и до 1280 пикселей — от вертикального до горизонтального положения планшета */
+@media screen and (max-width: 1279px) {
+  .content {
+    min-width: calc(100% - 160px*2);
+  }
+}
+
+/* стили от 320 и до 1023 пикселей — от большого смартфона до вертикального положения планшета */
+@media screen and (max-width: 1023px) {
+  .content {
+    min-width: calc(100% - 19px*2);
+  }
+}
