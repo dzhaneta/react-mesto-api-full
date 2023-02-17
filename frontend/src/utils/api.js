@@ -96,9 +96,9 @@ class Api {
 
 // API
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-46',
+  baseUrl: 'https://api.krasivoemesto.nomoredomains.work',
   headers: {
-    authorization: 'f4153072-2789-4ce5-9bfb-c8ce57bf3b50',
+    Accept: "application/json",
     'Content-Type': 'application/json'
   }
 });
