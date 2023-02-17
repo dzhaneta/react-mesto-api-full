@@ -46,7 +46,7 @@ export const checkToken = (jwt) => {
       headers: {
         'Accept': "application/json",
         "Content-Type": "application/json",
-        Authorization: `Bearer ${jwt}`,
+        credentials: 'include',
       },
     })
     .then(checkResponse);
