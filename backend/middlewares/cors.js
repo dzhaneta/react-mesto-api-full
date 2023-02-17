@@ -2,6 +2,8 @@
 const allowedCors = [
   'https://krasivoemesto.nomoredomains.work',
   'http://krasivoemesto.nomoredomains.work',
+  'https://api.krasivoemesto.nomoredomains.work',
+  'http://api.krasivoemesto.nomoredomains.work',
   'localhost:3000',
 ];
 

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { celebrate, Joi, errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('../middlewares/logger');
+const cors = require('../middlewares/cors');
 const auth = require('../middlewares/auth');
 const { login, createUser } = require('../controllers/users');
 const NotFoundError = require('../errors/notFoundError');
@@ -9,6 +10,9 @@ const RegExp = require('../utils/RegExp');
 
 // логгер запросов
 router.use(requestLogger);
+
+// проверка кросс-доменных запросов
+router.use(cors);
 
 // роуты, не требующие авторизации
 router.post('/signin', celebrate({
