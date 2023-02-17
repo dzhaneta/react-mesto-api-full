@@ -10,7 +10,13 @@ const app = express();
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
-});
+})
+  .then(() => {
+    console.log('Connected to the Database. Yayzow!');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 app.use(express.json());
 app.use(cookieParser());
