@@ -117,8 +117,8 @@ function App() {
     if (loggedIn) {
       api
       .getCards()
-      .then((cards) => {
-        setCards(cards);
+      .then((cardsData) => {
+        setCards(cardsData);
       })
       .catch((err) => {
         console.log(err);
