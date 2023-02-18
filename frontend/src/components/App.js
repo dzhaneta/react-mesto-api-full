@@ -80,9 +80,11 @@ function App() {
     auth
       .login(data.email, data.password)
       .then((res) => {
+        localStorage.setItem("jwt", res.token);
+      })
+      .then(() => {
         setLoggedIn(true);
         setEmail(data.email);
-        localStorage.setItem("jwt", res.token);
         history.push("/");
       })
       .catch((err) => {
