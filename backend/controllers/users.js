@@ -1,4 +1,4 @@
-const { NODE_ENV, JWT_SECRET } = process.env;
+const { NODE_ENV, JWT_SECRET, DOMAIN = 'localhost' } = process.env;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
@@ -22,7 +22,7 @@ module.exports.login = (req, res, next) => {
       res
         .cookie('jwt', token, {
           // token - наш JWT токен, который мы отправляем
-          domain: 'localhost',
+          domain: DOMAIN,
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
           sameSite: 'none',
