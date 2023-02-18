@@ -37,25 +37,22 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
 
   // token checkup
-  useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      auth
-        .checkToken(jwt)
-        .then((res) => {
-          setEmail(res.data.email);
-          setLoggedIn(true);
-          history.push("/");
-        })
-        .catch((err) => {
-          if (err.status === 400) {
-            console.log("400 — Токен не передан или передан не в том формате");
-          } else if (err.status === 401) {
-            console.log("401 — Переданный токен некорректен");
-          }
-        });
-    }
-  }, [history]);
+  // useEffect(() => {
+  //     auth
+  //       .checkToken()
+  //       .then((res) => {
+  //         setEmail(res.data.email);
+  //         setLoggedIn(true);
+  //         history.push("/");
+  //       })
+  //       .catch((err) => {
+  //         if (err.status === 400) {
+  //           console.log("400 — Токен не передан или передан не в том формате");
+  //         } else if (err.status === 401) {
+  //           console.log("401 — Переданный токен некорректен");
+  //         }
+  //       });
+  // }, [history]);
 
   // auth handlers
 
@@ -79,9 +76,6 @@ function App() {
   function handleLogin(data) {
     auth
       .login(data.email, data.password)
-      .then((res) => {
-        localStorage.setItem("jwt", res.cookie.jwt);
-      })
       .then(() => {
         setLoggedIn(true);
         setEmail(data.email);
