@@ -76,10 +76,10 @@ function App() {
   function handleLogin(data) {
     auth
       .login(data.email, data.password)
-      .then((res) => {
+      .then((profile) => {
         setLoggedIn(true);
         setEmail(data.email);
-        setCurrentUser(res.data);
+        setCurrentUser(profile);
         history.push("/");
       })
       .catch((err) => {
