@@ -91,6 +91,7 @@ module.exports.sendUserById = (req, res, next) => {
 
 module.exports.sendUserInfo = (req, res, next) => {
   const ownerId = req.user._id;
+
   User.findById(ownerId)
     .then((userInfo) => {
       if (!userInfo) {
