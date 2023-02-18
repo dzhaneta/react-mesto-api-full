@@ -105,7 +105,7 @@ function App() {
       api
       .getUserInfo()
       .then((profile) => {
-        setCurrentUser(profile);
+        setCurrentUser(profile.data);
       })
       .catch((err) => {
         console.log(err);
