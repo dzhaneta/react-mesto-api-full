@@ -46,8 +46,8 @@ export const checkToken = (jwt) => {
       headers: {
         'Accept': "application/json",
         "Content-Type": "application/json",
-        credentials: 'include',
       },
+      credentials: 'include',
     })
     .then(checkResponse);
 };
