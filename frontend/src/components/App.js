@@ -100,31 +100,31 @@ function App() {
 
   // user & cards setup
 
-  // useEffect(() => {
-  //   if (loggedIn) {
-  //     api
-  //     .getUserInfo()
-  //     .then((profile) => {
-  //       setCurrentUser(profile.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   }
-  // }, [loggedIn]);
+  useEffect(() => {
+    if (loggedIn) {
+      api
+      .getUserInfo()
+      .then((profile) => {
+        setCurrentUser(profile.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+  }, [loggedIn]);
 
-  // useEffect(() => {
-  //   if (loggedIn) {
-  //     api
-  //     .getCards()
-  //     .then((cards) => {
-  //       setCards(cards.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   }
-  // }, [loggedIn]);
+  useEffect(() => {
+    if (loggedIn) {
+      api
+      .getCards()
+      .then((cards) => {
+        setCards(cards.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+  }, [loggedIn]);
 
   // profile handlers
 
