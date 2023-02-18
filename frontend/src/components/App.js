@@ -79,7 +79,7 @@ function App() {
       .then((profile) => {
         setLoggedIn(true);
         setEmail(data.email);
-        setCurrentUser(profile);
+        setCurrentUser(profile.data);
         history.push("/");
       })
       .catch((err) => {
