@@ -76,9 +76,10 @@ function App() {
   function handleLogin(data) {
     auth
       .login(data.email, data.password)
-      .then(() => {
+      .then((res) => {
         setLoggedIn(true);
         setEmail(data.email);
+        setCurrentUser(res.data);
         history.push("/");
       })
       .catch((err) => {

@@ -26,7 +26,7 @@ module.exports.login = (req, res, next) => {
           httpOnly: true,
           sameSite: true,
         })
-        .send({ message: 'Авторизация успешна' });
+        .send({ data: user });
     })
     .catch(next);
 };
