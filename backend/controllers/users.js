@@ -25,7 +25,7 @@ module.exports.login = (req, res, next) => {
           domain: 'localhost',
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
-          sameSite: true,
+          sameSite: 'none',
         })
         .send({ data: user });
     })
