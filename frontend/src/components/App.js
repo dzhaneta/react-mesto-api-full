@@ -44,7 +44,7 @@ function App() {
         .getUserInfo()
         .then((profile) => {
           handleLoggedIn();
-          setCurrentUser(profile.data);
+          setCurrentUser(profile);
         })
         .catch((err) => {
           console.log(err);
