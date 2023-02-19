@@ -139,7 +139,7 @@ module.exports.updateUserInfo = (req, res, next) => {
         ));
       }
 
-      return res.send({ data: user });
+      return res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -171,7 +171,7 @@ module.exports.updateUserAvatar = (req, res, next) => {
           'Пользователь с указанным _id не найден.',
         ));
       }
-      return res.send({ data: user });
+      return res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
