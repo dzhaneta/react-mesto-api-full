@@ -56,7 +56,7 @@ module.exports.likeCard = (req, res, next) => {
       new: true,
       upsert: false,
     },
-  )
+  ).populate(['owner', 'likes'])
     .then((card) => {
       if (!card) {
         throw new NotFoundError('Карточка с указанным _id не найдена.');
@@ -80,7 +80,7 @@ module.exports.dislikeCard = (req, res, next) => {
       new: true,
       upsert: false,
     },
-  )
+  ).populate(['owner', 'likes'])
     .then((card) => {
       if (!card) {
         throw new NotFoundError('Карточка с указанным _id не найдена.');
