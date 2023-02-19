@@ -48,8 +48,8 @@ function App() {
 
     Promise.all([ getUser, getCars])
     .then((res) => {
-      setCurrentUser(res[0].data);
-      setEmail(res[0].data.email);
+      setCurrentUser(res[0]);
+      setEmail(res[0].email);
       setCards(res[1]);
     })
     .catch((err) => {
@@ -144,7 +144,7 @@ function App() {
     api
       .setUserInfo(data.name, data.about)
       .then((res) => {
-        setCurrentUser(res.data);
+        setCurrentUser(res);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
@@ -154,7 +154,7 @@ function App() {
     api
       .setUserAvatar(data.avatar)
       .then((res) => {
-        setCurrentUser(res.data);
+        setCurrentUser(res);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
