@@ -199,7 +199,7 @@ function App() {
     api
       .saveCard(data.name, data.link)
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        setCards([newCard.data, ...cards]);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
