@@ -7,7 +7,7 @@ function Card({ card, onClick, onCardLike, onCardDelete }) {
   const cardDeleteButtonClassName = `${
     isOwn ? "photo-grid__delete-button hover-opacity" : ""
   }`;
-  const isLiked = card.likes.some((like) => like === currentUser._id);
+  const isLiked = card.likes.some((like) => like._id === currentUser._id);
   const cardLikeButtonClassName = `photo-grid__like-button ${
     isLiked ? "photo-grid__like-button_active" : ""
   }`;
