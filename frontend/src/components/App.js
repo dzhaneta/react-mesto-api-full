@@ -42,13 +42,14 @@ function App() {
     if (!loggedIn) {
       return;
     }
-    
+
     const getUser = api.getUserInfo();
     const getCars = api.getCards();
 
     Promise.all([ getUser, getCars])
     .then((res) => {
-      setCurrentUser(res[0]);
+      setCurrentUser(res[0].data);
+      setEmail(res[0].data.email);
       setCards(res[1]);
     })
     .catch((err) => {
