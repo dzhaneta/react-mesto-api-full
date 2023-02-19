@@ -39,6 +39,10 @@ function App() {
   // user & cards setup 
 
   useEffect(() => {
+    if (!loggedIn) {
+      return;
+    }
+    
     const getUser = api.getUserInfo();
     const getCars = api.getCards();
 
@@ -57,7 +61,7 @@ function App() {
     auth
       .checkToken()
       .then((res) => {
-        if (res.ok) {
+        if (res) {
           setLoggedIn(true);
           history.push("/");
         }
