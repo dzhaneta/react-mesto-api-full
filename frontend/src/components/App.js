@@ -36,23 +36,30 @@ function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
 
-  // token checkup
-  // useEffect(() => {
-  //     auth
-  //       .checkToken()
-  //       .then((res) => {
-  //         setEmail(res.data.email);
-  //         setLoggedIn(true);
-  //         history.push("/");
-  //       })
-  //       .catch((err) => {
-  //         if (err.status === 400) {
-  //           console.log("400 — Токен не передан или передан не в том формате");
-  //         } else if (err.status === 401) {
-  //           console.log("401 — Переданный токен некорректен");
-  //         }
-  //       });
-  // }, [history]);
+  // user & cards setup
+
+  useEffect(() => {
+    if (loggedIn) {
+      api
+        .getUserInfo()
+        .then((profile) => {
+          handleLoggedIn();
+          setCurrentUser(profile.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+      api
+        .getCards()
+        .then((cardsData) => {
+          setCards(cardsData);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [loggedIn]);
 
   // auth handlers
 
@@ -76,8 +83,8 @@ function App() {
   function handleLogin(data) {
     auth
       .login(data.email, data.password)
-      .then((profile) => {
-        setLoggedIn(true);
+      .then(() => {
+        handleLoggedIn();
         setEmail(data.email);
         history.push("/");
       })
@@ -92,39 +99,14 @@ function App() {
       });
   }
 
-  function handleSignOut() {
-    setLoggedIn(false);
-    // localStorage.removeItem("jwt");
-    history.push("/sign-in");
+  function handleLoggedIn() {
+    setLoggedIn(true);
   }
 
-  // user & cards setup
-
-  useEffect(() => {
-    if (loggedIn) {
-      api
-      .getUserInfo()
-      .then((profile) => {
-        setCurrentUser(profile.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    }
-  }, [loggedIn]);
-
-  useEffect(() => {
-    if (loggedIn) {
-      api
-      .getCards()
-      .then((cardsData) => {
-        setCards(cardsData);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    }
-  }, [loggedIn]);
+  function handleSignOut() {
+    setLoggedIn(false);
+    history.push("/sign-in");
+  }
 
   // profile handlers
 
