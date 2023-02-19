@@ -36,30 +36,21 @@ function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
 
-  // user & cards setup
+  // user & cards setup function
 
-  useEffect(() => {
-    if (loggedIn) {
-      api
-        .getUserInfo()
-        .then((profile) => {
-          handleLoggedIn();
-          setCurrentUser(profile.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+  function getSetup() {
+    const getUser = api.getUserInfo();
+    const getCars = api.getCards();
 
-      api
-        .getCards()
-        .then((cardsData) => {
-          setCards(cardsData);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [loggedIn]);
+    Promise.all([ getUser, getCars])
+    .then((res) => {
+      setCurrentUser(res[0]);
+      setCards(res[1]);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
   // already loggedin checkup
   useEffect(() => {
@@ -68,13 +59,14 @@ function App() {
       .then((res) => {
         if (res.status === 200) {
           setLoggedIn(true);
+          getSetup();
           history.push("/");
         }
       })
       .catch((err) => {
         console.log(err);
       });
-}, []);  
+  }, [history]);  
 
   // auth handlers
 
@@ -99,7 +91,7 @@ function App() {
     auth
       .login(data.email, data.password)
       .then(() => {
-        handleLoggedIn();
+        setLoggedIn(true);
         setEmail(data.email);
         history.push("/");
       })
@@ -132,11 +124,6 @@ function App() {
         setRegistered(false);
         setIsInfoTooltipOpened(true);
       });
-  }
-
-
-  function handleLoggedIn() {
-    setLoggedIn(true);
   }
 
   // profile handlers
