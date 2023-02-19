@@ -38,7 +38,7 @@ function App() {
 
   // user & cards setup function
 
-  function getSetup() {
+  useEffect(() => {
     const getUser = api.getUserInfo();
     const getCars = api.getCards();
 
@@ -50,7 +50,7 @@ function App() {
     .catch((err) => {
       console.log(err);
     });
-}
+}, [loggedIn]);
 
   // already loggedin checkup
   useEffect(() => {
@@ -59,7 +59,6 @@ function App() {
       .then((res) => {
         if (res.status === 200) {
           setLoggedIn(true);
-          getSetup();
           history.push("/");
         }
       })
