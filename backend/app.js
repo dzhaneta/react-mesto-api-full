@@ -13,12 +13,6 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
-
 app.use('/', router);
 
 app.listen(PORT);

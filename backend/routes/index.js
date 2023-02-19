@@ -14,6 +14,12 @@ router.use(requestLogger);
 // проверка кросс-доменных запросов
 router.use(cors);
 
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 // роуты, не требующие авторизации
 router.post('/signin', celebrate({
   body: Joi.object().keys({
