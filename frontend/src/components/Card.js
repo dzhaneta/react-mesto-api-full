@@ -3,8 +3,10 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Card({ card, onClick, onCardLike, onCardDelete }) {
   const currentUser = React.useContext(CurrentUserContext);
-  const isOwn = (card.owner === currentUser._id);
-
+  const isOwn = card.owner._id === currentUser._id;
+  const cardDeleteButtonClassName = `${
+    isOwn ? "photo-grid__delete-button hover-opacity" : ""
+  }`;
   const isLiked = card.likes.some((like) => like === currentUser._id);
   const cardLikeButtonClassName = `photo-grid__like-button ${
     isLiked ? "photo-grid__like-button_active" : ""
@@ -21,14 +23,12 @@ function Card({ card, onClick, onCardLike, onCardDelete }) {
   return (
     <li className="card" id={card._id}>
       <div className="photo-grid__item">
-        {isOwn && (
-          <button
-            onClick={handleDeleteClick}
-            className="photo-grid__delete-button hover-opacity"
-            type="button"
-            aria-label="Удалить"
-          />
-        )}
+        <button
+          onClick={handleDeleteClick}
+          className={cardDeleteButtonClassName}
+          type="button"
+          aria-label="Удалить"
+        />
 
         <img
           onClick={() => onClick(card)}
