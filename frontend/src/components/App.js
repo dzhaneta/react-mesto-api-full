@@ -68,6 +68,7 @@ function App() {
       .then((res) => {
         if (res.status === 200) {
           setLoggedIn(true);
+          history.push("/");
         }
       })
       .catch((err) => {
