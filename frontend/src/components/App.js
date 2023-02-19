@@ -66,7 +66,7 @@ function App() {
     auth
       .checkToken()
       .then((res) => {
-        if (res.status === 200) {
+        if (res.status(200)) {
           setLoggedIn(true);
         }
       })
