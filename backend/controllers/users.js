@@ -64,19 +64,15 @@ module.exports.login = (req, res, next) => {
     .catch(next);
 };
 
-module.exports.logout = (req, res, next) => {
-  try {
-    return res
-      .clearCookie('jwt', {
-        domain: DOMAIN,
-        httpOnly: true,
-        sameSite: 'none',
-        secure: true,
-      })
-      .send({ message: 'Выход выполнен' });
-  } catch (err) {
-    return next(err);
-  }
+module.exports.logout = (req, res) => {
+  res
+    .clearCookie('jwt', {
+      domain: DOMAIN,
+      httpOnly: true,
+      sameSite: 'none',
+      secure: true,
+    })
+    .send({ message: 'Выход выполнен' });
 };
 
 module.exports.sendUsers = (req, res, next) => {

@@ -38,14 +38,14 @@ router.post('/signup', celebrate({
   }),
 }), createUser);
 
-router.post('/signout', logout);
-
 // авторизация
 router.use(auth);
 
 // роуты, которым авторизация нужна
 router.use('/users', require('./users'));
 router.use('/cards', require('./cards'));
+
+router.post('/signout', logout);
 
 router.use((req, res, next) => {
   next(new NotFoundError('Такой страницы не существует.'));

@@ -6,6 +6,7 @@ const BadRequestError = require('../errors/badRequestError');
 module.exports.sendCards = (req, res, next) => {
   Card.find({})
     .populate(['owner', 'likes'])
+    .sort({ createdAt: -1 })
     .then((cards) => res.send(cards))
     .catch(next);
 };
