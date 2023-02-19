@@ -36,7 +36,7 @@ function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
 
-  // user & cards setup function
+  // user & cards setup 
 
   useEffect(() => {
     const getUser = api.getUserInfo();
@@ -57,7 +57,7 @@ function App() {
     auth
       .checkToken()
       .then((res) => {
-        if (res.status === 200) {
+        if (res.ok) {
           setLoggedIn(true);
           history.push("/");
         }
