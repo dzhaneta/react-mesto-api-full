@@ -70,6 +70,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         name: name,
         link: link
@@ -84,7 +85,8 @@ class Api {
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: 'DELETE',
-      headers: this._headers
+      headers: this._headers,
+      credentials: 'include',
     })
     .then(this._checkResponse)
   }
@@ -96,7 +98,9 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: method,
       headers: this._headers,
-    }).then(this._checkResponse);
+      credentials: 'include',
+    })
+    .then(this._checkResponse);
   }
 }
 
