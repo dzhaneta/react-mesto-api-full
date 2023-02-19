@@ -114,7 +114,7 @@ module.exports.sendUserInfo = (req, res, next) => {
       if (!userInfo) {
         return next(new NotFoundError('Пользователь не найден.'));
       }
-      return res.send({ data: userInfo });
+      return res.send(userInfo);
     })
     .catch(next);
 };
