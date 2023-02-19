@@ -41,14 +41,14 @@ function App() {
       auth
         .checkToken()
         .then((res) => {
-          if (res.statusCode === 200) {
+          if (res.status === 200) {
             setLoggedIn(true);
           }
         })
         .catch((err) => {
           console.log(err);
         });
-  });  
+  }, []);  
 
   // user & cards setup
 
