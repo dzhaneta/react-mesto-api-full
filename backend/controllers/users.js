@@ -99,7 +99,7 @@ module.exports.sendUserInfo = (req, res, next) => {
       if (!userInfo) {
         return next(new NotFoundError('Пользователь не найден.'));
       }
-      return res.send({ userInfo });
+      return res.send({ data: userInfo });
     })
     .catch(next);
 };
