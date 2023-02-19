@@ -36,20 +36,6 @@ function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
 
-  // already loggedin checkup
-  useEffect(() => {
-      auth
-        .checkToken()
-        .then((res) => {
-          if (res.status === 200) {
-            setLoggedIn(true);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-  }, []);  
-
   // user & cards setup
 
   useEffect(() => {
@@ -74,6 +60,20 @@ function App() {
         });
     }
   }, [loggedIn]);
+
+  // already loggedin checkup
+  useEffect(() => {
+    auth
+      .checkToken()
+      .then((res) => {
+        if (res.status === 200) {
+          setLoggedIn(true);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+}, []);  
 
   // auth handlers
 
