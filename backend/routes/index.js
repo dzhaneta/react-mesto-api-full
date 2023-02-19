@@ -3,7 +3,7 @@ const { celebrate, Joi, errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('../middlewares/logger');
 const cors = require('../middlewares/cors');
 const auth = require('../middlewares/auth');
-const { login, createUser } = require('../controllers/users');
+const { login, createUser, logout } = require('../controllers/users');
 const NotFoundError = require('../errors/notFoundError');
 const errHandler = require('../middlewares/errHandler');
 const RegExp = require('../utils/RegExp');
@@ -31,6 +31,8 @@ router.post('/signup', celebrate({
     password: Joi.string().required(),
   }),
 }), createUser);
+
+router.post('/signout', logout);
 
 // авторизация
 router.use(auth);

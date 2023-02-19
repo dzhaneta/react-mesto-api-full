@@ -6,33 +6,6 @@ const BadRequestError = require('../errors/badRequestError');
 const ConflictError = require('../errors/conflictError');
 const NotFoundError = require('../errors/notFoundError');
 
-module.exports.login = (req, res, next) => {
-  const { email, password } = req.body;
-
-  return User.findUserByCredentials(email, password)
-    .then((user) => {
-      // аутентификация успешна! создадим токен
-      const token = jwt.sign(
-        { _id: user._id },
-        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
-        { expiresIn: '7d' },
-      );
-
-      // вернём токен, записав его в httpOnly куку
-      res
-        .cookie('jwt', token, {
-          // token - наш JWT токен, который мы отправляем
-          domain: DOMAIN,
-          maxAge: 3600000 * 24 * 7,
-          httpOnly: true,
-          sameSite: 'none',
-          secure: true,
-        })
-        .send({ data: user });
-    })
-    .catch(next);
-};
-
 module.exports.createUser = (req, res, next) => {
   const {
     name,
@@ -62,6 +35,48 @@ module.exports.createUser = (req, res, next) => {
       }
       return next(err);
     });
+};
+
+module.exports.login = (req, res, next) => {
+  const { email, password } = req.body;
+
+  return User.findUserByCredentials(email, password)
+    .then((user) => {
+      // аутентификация успешна! создадим токен
+      const token = jwt.sign(
+        { _id: user._id },
+        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
+        { expiresIn: '7d' },
+      );
+
+      // вернём токен, записав его в httpOnly куку
+      res
+        .cookie('jwt', token, {
+          // token - наш JWT токен, который мы отправляем
+          domain: DOMAIN,
+          maxAge: 3600000 * 24 * 7,
+          httpOnly: true,
+          sameSite: 'none',
+          secure: true,
+        })
+        .send({ data: user });
+    })
+    .catch(next);
+};
+
+module.exports.logout = (req, res, next) => {
+  try {
+    return res
+      .clearCookie('jwt', {
+        domain: DOMAIN,
+        httpOnly: true,
+        sameSite: 'none',
+        secure: true,
+      })
+      .send({ message: 'Выход выполнен' });
+  } catch (err) {
+    return next(err);
+  }
 };
 
 module.exports.sendUsers = (req, res, next) => {

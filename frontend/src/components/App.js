@@ -113,13 +113,29 @@ function App() {
       });
   }
 
-  function handleLoggedIn() {
-    setLoggedIn(true);
+  function handleSignOut() {
+    auth
+      .logout()
+      .then(() => {
+        setLoggedIn(false);
+        setEmail("");
+        setCurrentUser({});
+        history.push("/sign-in");
+      })
+      .catch((err) => {
+        if (err.status === 400) {
+          console.log("400 - не передано одно из полей");
+        } else if (err.status === 401) {
+          console.log("401 - пользователь с email не найден");
+        }
+        setRegistered(false);
+        setIsInfoTooltipOpened(true);
+      });
   }
 
-  function handleSignOut() {
-    setLoggedIn(false);
-    history.push("/sign-in");
+
+  function handleLoggedIn() {
+    setLoggedIn(true);
   }
 
   // profile handlers
